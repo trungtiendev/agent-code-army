@@ -33,4 +33,5 @@
 - Workspace đã được Git init, commit lần đầu
 - File `BACKPACK.md` — phao cứu sinh cho phiên mới
 - File `agent-army/setup.sh` — bootstrap script
+- File `agent-army/COMMANDS.md` — tổng hợp cách ra lệnh cho đội quân
 - Cần push lên GitHub để bảo vệ tuyệt đối
