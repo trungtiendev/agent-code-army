@@ -27,6 +27,7 @@ agent-army/
 │       ├── 05-review.md   ← Code review (Reviewer Agent)
 │       ├── infra/         ← Docker, CI/CD (DevOps Agent)
 │       ├── docs/          ← Tài liệu (Documenter Agent)
+│       ├── pipeline.log.md ← Nhật ký pipeline (Commander)
 │       └── README.md      ← README tổng thể
 ```
 
@@ -109,12 +110,42 @@ Mỗi agent là một **isolated sub-agent session** — không conflict context
 - Model có khả năng code tốt (hiện tại: DeepSeek V4 Flash)
 - Workspace: `~/.openclaw/workspace/`
 
+## 💰 Ước tính chi phí Token
+
+<!-- REVIEW-FIX: S2 — Thêm ước tính token cost vào README -->
+
+Mỗi lần chạy full pipeline (8 agent), ước tính:
+
+| Agent | Input tokens | Output tokens | Tổng ~ | Ghi chú |
+|-------|-------------|---------------|--------|---------|
+| PO Agent | 2K-5K | 3K-8K | ~10K | Phân tích + viết PRD |
+| Architect Agent | 3K-8K | 5K-15K | ~20K | Đọc PRD + viết spec chi tiết |
+| Backend Agent | 5K-15K | 10K-40K | ~50K | Code nhiều file, model nặng nhất |
+| Frontend Agent | 5K-15K | 10K-40K | ~50K | Code nhiều file, chạy song song với Backend |
+| Tester Agent | 5K-20K | 5K-20K | ~35K | Đọc code + viết test |
+| Reviewer Agent | 8K-30K | 5K-15K | ~40K | Đọc toàn bộ codebase |
+| DevOps Agent | 5K-15K | 3K-10K | ~20K | Docker + CI/CD configs |
+| Doc Agent | 10K-30K | 5K-15K | ~40K | Đọc tất cả files + viết docs |
+| **TỔNG CỘNG** | | | **~265K** | Cho app cỡ vừa (5-10 file code) |
+
+**Lưu ý:**
+- App nhỏ (CRUD đơn giản): ~100K-150K tokens
+- App vừa (5-10 modules): ~250K-350K tokens
+- App lớn (10+ modules, auth, payment...): ~500K+ tokens
+- Song song Backend + Frontend giúp tiết kiệm thời gian (không tiết kiệm token)
+- Có thể skip agent không cần thiết để tiết kiệm (VD: skip DevOps, Doc cho MVP)
+- Dùng model rẻ hơn cho PO, Doc (VD: DeepSeek V4 Flash) và model mạnh hơn cho Backend, Reviewer
+
 ## 📌 Lưu ý
 
 - **Agent không biết nhau** — mỗi agent chỉ đọc file input và viết file output. Tôi (Commander) là người kết nối họ.
 - **Human-in-the-loop** — Tôi sẽ hỏi Thầy trước khi deploy, trước khi dùng API key thật, trước khi chạy destructive commands.
 - **Chi phí token** — Pipeline dài sẽ tốn nhiều token. Cân nhắc dùng model rẻ hơn (DeepSeek) cho các agent như PO, Doc.
 - **Song song** — Backend + Frontend chạy đồng thời, tiết kiệm thời gian.
+- **Timeout protection** — Mỗi agent có `runTimeoutSeconds` (120-300s) để tránh treo vô hạn.
+- **Output validation** — Commander kiểm tra file output sau mỗi bước. Nếu lỗi → báo Thầy ngay.
+- **Pipeline log** — Mỗi lần chạy đều ghi `pipeline.log.md` để audit trail.
+- **Isolated context** — Tất cả agent dùng context `isolated` (mặc định), tránh token tràn và conflict.
 
 ---
 

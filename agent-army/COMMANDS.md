@@ -212,3 +212,17 @@ Gọi đúng một agent làm việc cụ thể:
 > 3. Càng **chi tiết** càng tốt — tech stack, scope, ưu tiên
 >
 > Không cần nhớ câu lệnh. Cứ nói tự nhiên như nói với đồng nghiệp. Tôi sẽ hiểu.
+
+---
+
+## 7. PIPELINE SAFETY
+
+<!-- REVIEW-FIX: Tài liệu các cải tiến pipeline mới -->
+
+Mỗi lần chạy pipeline, Commander tự động:
+- **Kiểm tra output** sau mỗi agent → báo lỗi ngay nếu file không được tạo
+- **Set timeout** cho mỗi agent (120-300s) → tránh treo vô hạn
+- **Ghi pipeline log** vào `pipeline.log.md` → audit trail đầy đủ
+- **Dùng context isolated** cho tất cả agent → tránh token tràn, conflict
+
+Nếu pipeline lỗi ở bước nào, Commander sẽ báo Thầy và hỏi ý kiến trước khi tiếp tục.
