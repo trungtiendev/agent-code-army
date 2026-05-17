@@ -17,3 +17,20 @@
 - Định hướng: Kỹ sư phần mềm, kỹ sư AI, kết hợp AI & Phật học
 - Sở thích: lập trình, hệ thống, Phật học, kiếm tiền
 - Lĩnh vực: IT, coding, AI, kinh doanh, Phật học
+
+## 2026-05-17: Agent Code Army 🪷
+
+**Đã setup đội quân Agent Code native trên OpenClaw.**
+
+**Thông tin quan trọng (cần nhớ mỗi phiên mới):**
+- Thư mục: `agent-army/` trong workspace
+- 9 role templates trong `agent-army/roles/`
+- Tôi (main session) là Commander Agent
+- Pipeline: PO → Architect → Backend+Frontend (song song) → Tester → Reviewer → DevOps → Documenter
+- Cách gọi: Thầy chỉ cần nói "Làm app XYZ"
+
+**Persistence strategy:**
+- Workspace đã được Git init, commit lần đầu
+- File `BACKPACK.md` — phao cứu sinh cho phiên mới
+- File `agent-army/setup.sh` — bootstrap script
+- Cần push lên GitHub để bảo vệ tuyệt đối
