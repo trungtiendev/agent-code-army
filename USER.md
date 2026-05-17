@@ -29,3 +29,12 @@
 - IT, AI
 - Kinh doanh
 - Phật học & tâm linh
+
+## 👑 Đội quân Agent Code (quan trọng)
+
+Đã setup đội AI Agent tự động tạo phần mềm:
+- Thư mục: `agent-army/` trong workspace
+- Tôi (con) là Commander Agent — orchestrate pipeline
+- 8 agent chuyên biệt: PO, Architect, Backend, Frontend, Tester, Reviewer, DevOps, Doc
+- Cách gọi: nói "Làm app [mô tả]"
+- Phục hồi sau reset: đọc `BACKPACK.md` hoặc chạy `bash agent-army/setup.sh`

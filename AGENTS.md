@@ -16,7 +16,9 @@ That context may already include:
 - recent daily memory such as `memory/YYYY-MM-DD.md`
 - `MEMORY.md` when this is the main session
 
-Do not manually reread startup files unless:
+If you see `BACKPACK.md`, read it — it contains critical project context that won't be in startup context.
+
+Do not manually reread other startup files unless:
 
 1. The user explicitly asks
 2. The provided context is missing something you need
