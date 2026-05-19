@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-18T15:05:06.411Z",
+  "entries": {
+    "memory:memory/2026-05-17.md:1:16": {
+      "key": "memory:memory/2026-05-17.md:1:16",
+      "path": "memory/2026-05-17.md",
+      "startLine": 1,
+      "endLine": 16,
+      "source": "memory",
+      "snippet": "## Đã lưu create-devteam-idea.md - Nội dung: ý tưởng thành lập đội Agent Code (AI multi-agent software factory) - Gồm: mô hình đội truyền thống, 8 agent AI chuyên biệt, workflow, công nghệ (CrewAI, LangGraph, Cursor...), lộ trình 4 giai đoạn, lưu ý kỹ thuật - File: `/home/hgahct/.openclaw/workspace/create-devteam-idea.md` ## Đã setup Agent Code Army (OpenClaw native) - Tạo thư mục `agent-army/` với 9 role templates (commander + 8 agents) - Mỗi agent có file .md riêng: po-agent, architect-agent, backend-agent, frontend-agent, tester-agent, reviewer-agent, devops-agent, doc-agent - Commander agent là chính tôi (main session) — orchestrate pipeline bằng sessions_spawn - Cách gọi: chỉ cần Th",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-18T15:05:06.411Z",
+      "lastRecalledAt": "2026-05-18T15:05:06.411Z",
+      "queryHashes": [
+        "2d7e29b47052"
+      ],
+      "recallDays": [
+        "2026-05-18"
+      ],
+      "conceptTags": [
+        "create-devteam-idea.md",
+        "multi-agent",
+        "home/hgahct",
+        "agent-army",
+        "po-agent",
+        "architect-agent",
+        "backend-agent",
+        "frontend-agent"
+      ]
+    }
+  }
+}
