@@ -80,6 +80,36 @@ Commander:
 - **PO Agent** — chỉ đọc idea.md (text), không có code để index
 - **Architect Agent** — đọc PRD, thiết kế từ đầu, chưa có code
 
+## 🌐 trungtienlearn Admin API (Quản trị web bằng Agent)
+
+Agent có thể quản trị website trungtienlearn qua REST API:
+
+```bash
+# Base URL
+PROD="https://trungtienlearn.vercel.app"
+KEY="<ADMIN_API_KEY>"
+
+# Đọc API docs đầy đủ
+cat trungtienlearn/docs/admin-api.md
+
+# Ví dụ: tạo bài viết
+curl -X POST $PROD/api/admin/posts \
+  -H "Authorization: Bearer $KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"title":"...","slug":"...","content":"...","published":false}'
+
+# Ví dụ: lấy dashboard
+curl $PROD/api/admin/dashboard -H "Authorization: Bearer $KEY"
+```
+
+**Các lệnh Thầy có thể dùng:**
+- "Đăng bài viết mới lên trungtienlearn"
+- "Cập nhật trạng thái dự án X"
+- "Kiểm tra dashboard trungtienlearn"
+- "Xem có tin nhắn mới không"
+
+Agent sẽ tự động gọi API với ADMIN_API_KEY từ `.env.local`.
+
 ## Project structure
 
 Every project lives at `agent-army/projects/<name>/`:
@@ -114,6 +144,9 @@ project/
 | "Setup Docker cho project abc" | Axon communities → DevOps Agent |
 | "Viết docs cho todo-app" | Axon explain → Documenter Agent |
 | "Thêm test cho module payment" | Axon test-impact → Tester Agent |
+| "Đăng bài viết mới lên trungtienlearn" | Commander → Backend Agent gọi Admin API POST /api/admin/posts |
+| "Cập nhật trạng thái dự án X" | Commander → Backend Agent gọi Admin API PUT |
+| "Kiểm tra dashboard trungtienlearn" | Commander → GET /api/admin/dashboard → báo cáo |
 | "Dùng Claude cho Reviewer Agent" | Override model per agent |
 
 ## Spawning agents
