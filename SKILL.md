@@ -86,7 +86,7 @@ Agent có thể quản trị website trungtienlearn qua REST API:
 
 ```bash
 # Base URL
-PROD="https://trungtienlearn.vercel.app"
+PROD="https://trungtienlearn.com"
 KEY="<ADMIN_API_KEY>"
 
 # Đọc API docs đầy đủ
