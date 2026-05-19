@@ -113,3 +113,4 @@ temp/
 # ── Agent-specific ──
 .agent-cache/
 .agent-state/
+agent-army/
