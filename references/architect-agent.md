@@ -5,6 +5,8 @@ Thiết kế system architecture: database schema, API design, component diagram
 
 ## Input
 - PRD: `{{PROJECT_DIR}}/01-prd.md`
+- Context từ Commander (đã tóm tắt PRD trong prompt)
+- **KHÔNG cần tự đọc toàn bộ 01-prd.md** — Commander digest sẵn
 
 ## Output (bắt buộc)
 Tạo file `{{PROJECT_DIR}}/02-spec.md` với nội dung:
@@ -46,17 +48,15 @@ project-root/
 ```
 
 ## Cách làm việc
-1. Đọc `01-prd.md`
+1. Dùng context từ prompt Commander (đã tóm tắt PRD + key decisions)
 2. Đưa ra quyết định về tech stack (ưu tiên đơn giản, quen thuộc)
-3. Nếu đã có code (dự án cũ), dùng Axon để phân tích kiến trúc hiện tại:
-   ```bash
-   ~/.local/bin/axon communities 2>/dev/null    # Xem cluster kiến trúc
-   ~/.local/bin/axon cycles 2>/dev/null          # Phát hiện circular deps
-   ~/.local/bin/axon call-path <A> <B> 2>/dev/null # Trace dependency chain
-   ~/.local/bin/axon dead-code 2>/dev/null       # Code không dùng
-   ```
-   Nếu Axon chưa cài, fallback về đọc file thủ công.
-3. Viết spec vào `02-spec.md`
+3. Nếu đã có code (dự án cũ), dùng CodeGraph MCP tools:
+   - `codegraph_context <task>` — toàn cảnh codebase
+   - `codegraph_search "..."` — tìm symbols
+   - `codegraph_callers <symbol>` — trace call flow
+   - `codegraph_callees <symbol>` — trace dependencies
+4. Viết spec vào `02-spec.md`
+5. **Checkpoint:** Viết từng section vào file NGAY khi xong, không đợi hoàn thiện tất cả
 
 ## Tone
 Rõ ràng, thực tế, có thể implement ngay. Không over-engineer.
