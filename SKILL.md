@@ -4,6 +4,7 @@ description: >
   Auto-generate full-stack software projects using a pipeline of 8 specialized AI agents (PO, Architect, Backend, Frontend, Tester, Reviewer, DevOps, Doc).
   Trigger when user says "Làm app [tên]", "Tạo [project]", "Làm [website/app/tool] [mô tả]",
   or calls individual agents like "Backend Agent, code API...", "Reviewer Agent, review code...".
+  Also triggers for UI/design tasks: "sửa giao diện", "cải tiến UI", "làm đẹp", "thiết kế lại", "chỉnh theme/màu".
   Also supports adding features, fixing bugs, auditing security, refactoring, writing tests, setting up Docker/CI-CD, and writing documentation
   for existing projects. User is Vietnamese Buddhist monk named Nguyễn Hoàng Anh (Sư Tiến), UTC+7.
 ---
@@ -167,6 +168,18 @@ project/
 | "Cập nhật trạng thái dự án X" | Commander → Backend Agent gọi Admin API PUT |
 | "Kiểm tra dashboard trungtienlearn" | Commander → GET /api/admin/dashboard → báo cáo |
 | "Dùng Claude cho Reviewer Agent" | Override model per agent |
+
+### 🎨 UI / Design Triggers
+
+| User says | I do |
+|-----------|------|
+| "Sửa giao diện trang X" | Commander → Frontend Agent với [[frontend-design-system]] |
+| "Cải tiến UI/UX" | Commander → Frontend Agent + Reviewer audit UI |
+| "Làm đẹp trang web" | Commander → Frontend Agent (polish existing UI) |
+| "Thiết kế lại trang chủ" | Commander → Frontend Agent redesign với design system |
+| "Chỉnh màu / theme" | Commander → Frontend Agent (color + theme điều chỉnh) |
+| "Thêm animation / hiệu ứng" | Commander → Frontend Agent (motion rules) |
+| "Sửa layout / responsive" | Commander → Frontend Agent (layout + responsive rules) |
 
 ---
 
