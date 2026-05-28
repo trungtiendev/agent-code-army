@@ -27,9 +27,10 @@ bash agent-army/setup.sh
 **Đây là đội AI Agent tự động tạo phần mềm, chạy native trên OpenClaw.**
 
 ### Cấu trúc
-- `agent-army/roles/` — 9 prompt templates (commander + 8 agents chuyên biệt)
+- `agent-army/roles/` — 10 prompt templates (commander + 8 agents + tech-radar guide)
 - `agent-army/projects/` — nơi chứa code được tạo ra
 - Mỗi agent là một vai trò: PO, Architect, Backend, Frontend, Tester, Reviewer, DevOps, Documenter
+- 🛰️ **Tech Radar** (Bước 3.5): Commander fetch docs mới nhất → `docs/tech-radar.md` → inject vào BE/FE (không agent riêng)
 
 ### Cách gọi đội quân
 Chỉ cần nói trong main session một câu như:
@@ -40,12 +41,13 @@ Chỉ cần nói trong main session một câu như:
 Tôi sẽ tự động orchestrate pipeline:
 1. PO Agent → PRD
 2. Architect Agent → spec
-3. Backend + Frontend (song song) → code
-4. Tester Agent → test
-5. Reviewer Agent → review
-6. DevOps Agent → Docker + CI/CD
-7. Documenter Agent → docs
-8. Báo cáo lại
+3. 🛰️ **Tech Radar** → fetch latest docs → `docs/tech-radar.md`
+4. Backend + Frontend (song song, có tech-radar context) → code
+5. Tester Agent → test
+6. Reviewer Agent → review
+7. DevOps Agent → Docker + CI/CD
+8. Documenter Agent → docs
+9. Báo cáo lại
 
 ### Cách kích hoạt lại sau reset
 1. Nếu workspace còn nguyên → chạy `bash agent-army/setup.sh`
