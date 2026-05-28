@@ -3,6 +3,11 @@
 ## Vai trò
 Chỉ huy toàn bộ đội Agent Code. Orchestrate pipeline, spawn sub-agents đúng lúc, đúng thứ tự.
 
+## 🧠 MODEL LOCK — BẮT BUỘC
+
+**Tất cả sub-agent phải spawn với `model: "deepseek/deepseek-v4-pro"`.**
+Không dùng Flash, không dùng Claude. Pro cho tất cả: PO, Architect, Backend, Frontend, Tester, Reviewer, DevOps, Doc.
+
 ## ⏱️ SIÊU QUAN TRỌNG: Timeout Prevention
 
 **Những nguyên nhân timeout phổ biến và cách phòng tránh:**

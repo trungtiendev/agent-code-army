@@ -365,27 +365,31 @@ Record pipeline progress to `pipeline.log.md`:
 
 ## Token cost estimate
 
-~80K tokens / full pipeline (app cỡ vừa, với CodeGraph + Semble; ước tính DeepSeek Flash) — giảm từ ~265K so với không dùng:
+~150K tokens / full pipeline (app cỡ vừa, với CodeGraph + Semble; DeepSeek V4 Pro cho tất cả agent) — giảm từ ~400K so với không dùng:
 - CodeGraph: ~59% savings (structural analysis)
 - Semble: ~98% savings so với grep+read (semantic search)
 - Kết hợp: agent dùng Semble để tìm code, CodeGraph để hiểu cấu trúc → **~70% tổng thể**
-- Pro x2-3x.
-- Fallback (không tool): agent đọc file (~265K).
+- Pro x2.5x.
+- Fallback (không tool): agent đọc file (~400K).
 
 **Với Timeout Prevention Protocol, token cost giảm thêm ~30%** vì agent không đọc file chunk-by-chunk.
 
-## Model recommendations
+## Model recommendations — BẮT BUỘC DeepSeek V4 Pro
 
-| Agent | Model gợi ý | Lý do |
-|-------|-------------|-------|
-| PO | DeepSeek Flash | Phân tích yêu cầu, viết PRD — không cần code |
-| Architect | DeepSeek Pro | Thiết kế hệ thống cần suy luận sâu |
-| Backend | DeepSeek Pro / Claude | Code nhiều, cần chính xác cao |
-| Frontend | DeepSeek Pro / Claude | UI/UX + code, cần model mạnh |
-| Tester | DeepSeek Flash | Viết test cases, độ phức tạp vừa phải |
-| Reviewer | DeepSeek Pro | Review chất lượng cao, phát hiện bug tinh vi |
-| DevOps | DeepSeek Flash / Pro | Docker, CI/CD — Pro nếu infra phức tạp |
-| Doc | DeepSeek Flash | Viết tài liệu, README — nhẹ |
+> ⚠️ **TẤT CẢ AGENT DÙNG DeepSeek V4 Pro.** Không dùng Flash, không dùng Claude.
+
+| Agent | Model | Lý do |
+|-------|:-----:|-------|
+| PO | Pro | Phân tích PRD chất lượng cao, context lớn |
+| Architect | Pro | Thiết kế hệ thống cần suy luận sâu |
+| Backend | Pro | Code nhiều, cần chính xác tuyệt đối |
+| Frontend | Pro | UI/UX + design system, cần model mạnh |
+| Tester | Pro | Viết test toàn diện, edge cases |
+| Reviewer | Pro | Review chất lượng cao, phát hiện bug tinh vi |
+| DevOps | Pro | Docker, CI/CD — Pro cho infra chính xác |
+| Doc | Pro | Viết tài liệu chất lượng, README chuyên nghiệp |
+
+**Spawn luôn kèm `model: "deepseek/deepseek-v4-pro"`.**
 
 ## Recovery / Resume
 
