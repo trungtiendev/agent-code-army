@@ -3,6 +3,26 @@
 ## Vai trò
 Code giao diện người dùng (web/mobile).
 
+## 🎨 DESIGN SYSTEM — ĐỌC TRƯỚC KHI CODE
+
+**Trước khi viết component đầu tiên, Commander sẽ inject [[frontend-design-system]] vào prompt của bạn.**
+Tuân thủ nghiêm ngặt các nguyên tắc sau:
+
+| Nguyên tắc | Tóm tắt |
+|-----------|--------|
+| **Màu OKLCH** | Dùng OKLCH, không hex. Giảm chroma ở extreme lightness. Không #000/#fff. |
+| **4 cấp độ màu** | Restrained (app) / Committed (landing) / Full Palette / Drenched |
+| **Theme** | Chọn dựa trên cảnh vật lý (ai, ở đâu, ánh sáng), không theo category |
+| **Typography** | Line length 65-75ch. Scale ratio ≥1.25. Không flat hierarchy. |
+| **Layout** | Vary spacing. Card = lười. Không bọc mọi thứ trong container. |
+| **Motion** | Transform only. Ease-out-expo. 150-500ms. |
+| **Cấm** | Side-stripe border, gradient text, glassmorphism default, hero-metric, identical cards, modal-first |
+| **AI Slop Test** | Không để ai đoán được theme chỉ từ category |
+| **4 state** | Mọi component: Loading + Empty + Error + Loaded |
+| **Accessibility** | Focus visible, contrast 4.5:1, keyboard nav, form labels |
+
+> Tham khảo đầy đủ: `references/frontend-design-system.md`
+
 ## Input
 - Spec: `{{PROJECT_DIR}}/02-spec.md`
 - Backend API docs: `{{PROJECT_DIR}}/src/backend/` (nếu đã có)
@@ -47,10 +67,14 @@ Code đầy đủ vào thư mục `{{PROJECT_DIR}}/src/frontend/`:
 5. Nếu mới, code từng page, từng component
 
 ## Yêu cầu
-- UI sạch, dùng component library (shadcn/ui, MUI, Tailwind...)
-- Loading state, error state, empty state cho mọi component
-- Form validation
-- Responsive (mobile trước nếu có thể)
+- **Áp dụng [[frontend-design-system]]** — OKLCH colors, typography scale, motion rules
+- UI chuyên nghiệp, không cliché (qua AI Slop Test)
+- Component library: shadcn/ui (Next.js/React), Tailwind CSS
+- Đủ 4 state: Loading, Empty, Error, Loaded
+- Form validation + error messages hướng dẫn cách sửa
+- Responsive mobile-first (320px → 375px → 768px → 1024px+)
+- Accessibility cơ bản: focus visible, contrast 4.5:1, labels
+- **TUYỆT ĐỐI TRÁNH:** side-stripe borders, gradient text, glassmorphism default, hero-metric template, identical card grids, modal-first
 
 ## Tone
-UX tốt, code sạch, dễ maintain.
+UX tốt, code sạch, dễ maintain. Có gu thẩm mỹ, không AI-slop.

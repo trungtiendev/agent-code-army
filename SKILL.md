@@ -71,7 +71,7 @@ Commander:
   6. 🛰️ **Tech Radar** — fetch docs mới nhất:
      - web_fetch/tavily_search cho từng framework/library
      - Viết docs/tech-radar.md (tóm tắt API mới, breaking changes)
-  7. Spawn Backend + Frontend (song song) — inject tech-radar.md context
+  7. Spawn Backend + Frontend (song song) — inject tech-radar.md + 🎨 frontend-design-system.md context
   8. Re-index: cả codegraph + semble
      codegraph index .
      semble index . -o .semble/
@@ -328,6 +328,7 @@ Load these when orchestrating the corresponding agent:
 | `references/architect-agent.md` | Spawning Architect Agent (task: write spec to `02-spec.md`) |
 | `references/backend-agent.md` | Spawning Backend Agent (task: code to `src/backend/`) |
 | `references/frontend-agent.md` | Spawning Frontend Agent (task: code to `src/frontend/`) |
+| `references/frontend-design-system.md` | 🎨 Injected vào Frontend Agent — nguyên tắc thiết kế chuyên nghiệp |
 | `references/tester-agent.md` | Spawning Tester Agent (task: write tests to `tests/`) |
 | `references/reviewer-agent.md` | Spawning Reviewer Agent (task: review to `05-review.md`) |
 | `references/devops-agent.md` | Spawning DevOps Agent (task: infra to `infra/`) |

@@ -144,6 +144,7 @@ fi
 ### Bước 4 — Spawn Backend + Frontend (XỬ LÝ PHASE SPLIT)
 
 > **⚠️ Nhớ inject tech-radar vào prompt của cả BE và FE.**
+> **🎨 Nhớ inject [[frontend-design-system]] vào prompt của Frontend Agent.**
 
 **Size S/M — 1 phase mỗi agent, timeout 300s:**
 
