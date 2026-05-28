@@ -287,14 +287,20 @@ Ví dụ:
 
 ## Spawning agents
 
+> ⛔ **SAU KHI SPAWN, DÙNG `sessions_yield()` ĐỂ CHỜ. TUYỆT ĐỐI KHÔNG CHEN NGANG TỰ LÀM.**
+
 Use `sessions_spawn` with `context="isolated"` (default). **Dynamic timeout dựa trên size class:**
 
 ```text
 sessions_spawn({
   task: "[Digested context from Commander - KHÔNG bắt agent đọc file]",
   runTimeoutSeconds: <dynamic: 120 + (files * 30) + 60>,
+  model: "deepseek/deepseek-v4-pro",
   mode: "run"
 })
+// ↓ BẮT BUỘC: gọi sessions_yield() ngay sau khi spawn
+// ↓ KHÔNG làm gì khác, KHÔNG tự code, KHÔNG đọc file
+// ↓ Chờ completion event từ sub-agent
 ```
 
 ### Dynamic timeouts quick reference
