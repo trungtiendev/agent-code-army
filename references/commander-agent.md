@@ -17,6 +17,7 @@ Không dùng Flash, không dùng Claude. Pro cho tất cả: PO, Architect, Back
   1. Spawn sub-agent
   2. Gọi sessions_yield() — chờ completion event
   3. Khi nhận completion event → kiểm tra kết quả → tiếp tục
+  4. **Kiểm tra layout regression:** nếu thay đổi layout (topbar→sidebar, etc.), grep toàn bộ CSS tìm `position: sticky`, `position: fixed`, `top`, `z-index` check xem còn giá trị hardcoded từ layout cũ không
 
 - ❌ SAI (CHEN NGANG — tốn token, đứt mạch tư duy):
   1. Spawn sub-agent

@@ -222,4 +222,5 @@ Mỗi component phải có đủ 4 state:
 4. Code đủ 4 state
 5. Check accessibility cơ bản
 6. Check các lệnh cấm (side-stripe, gradient text, glassmorphism...)
-7. Chạy AI Slop Test (có cliché không?)
+7. **Kiểm tra CSS layout regression** — nếu thay đổi layout (topbar → sidebar, grid → flex), kiểm tra TẤT CẢ `position: sticky`, `position: fixed`, `top`, `z-index` trong toàn bộ CSS cũ. Không để sót giá trị hardcoded từ layout cũ.
+8. Chạy AI Slop Test (có cliché không?)
